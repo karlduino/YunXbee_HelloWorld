@@ -31,10 +31,20 @@ void setup() {
   delay(1);
 
   // Setup callbacks
+  xbee.onZBExplicitRxResponse(processRxPacket);
   xbee.onZBRxResponse(processRxPacket);
 }
 
 void processRxPacket(ZBRxResponse& rx, uintptr_t) {
+  DebugSerial.print(F("Received packet from "));
+  printHex(DebugSerial, rx.getRemoteAddress64());
+  DebugSerial.println();
+  DebugSerial.print(F("Payload: "));
+  DebugSerial.write(rx.getData(), rx.getDataLength());
+  DebugSerial.println();
+}
+
+void processRxPacket(ZBExplicitRxResponse& rx, uintptr_t) {
   DebugSerial.print(F("Received packet from "));
   printHex(DebugSerial, rx.getRemoteAddress64());
   DebugSerial.println();
