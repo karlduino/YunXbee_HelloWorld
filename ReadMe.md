@@ -38,3 +38,16 @@ be a bit tricky: see [here](http://bit.ly/yun_xbee) and
   
 ### Software changes
 
+- Using Console for printing debug messages, and so added `#include
+  <Console.h>` and changed `Serial` to `Console` in `#define
+  DebugSerial Serial`. Also deleted the `DebugSerial.begin(115200)`
+  and added `Bridge.begin()`, `Console.begin()`, and
+  `while(!Console);`
+  
+- To use pins 13 and 5 for Rx/Tx with XBee, added:
+
+  ```
+  #define ALTSS_USE_TIMER3
+  #define INPUT_CAPTURE_PIN      13 // receive
+  #define OUTPUT_COMPARE_A_PIN        5 // transmit
+  ```
