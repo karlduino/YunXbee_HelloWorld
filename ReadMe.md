@@ -51,3 +51,11 @@ be a bit tricky: see [here](http://bit.ly/yun_xbee) and
   #define INPUT_CAPTURE_PIN      13 // receive
   #define OUTPUT_COMPARE_A_PIN        5 // transmit
   ```
+
+### Final notes
+
+Router XBee + Arduino Uno are running the HelloSend sketch, to send a
+"Hello, world!" message to the Coordinator XBee every 10 seconds.
+
+Coordinator XBee + Arduino Y&uacute;n are running the HelloReceive
+sketch, to print (to Console) what ever the XBee receives.
