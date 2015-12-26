@@ -10,6 +10,13 @@
 //
 // This example prints any received ZigBee radio packets to serial.
 
+// This example was modified somewhat by Karlduino (https://github.com/karlduino)
+// to work with an Arduino Yun. Using a Sparkfun Xbee shield, with pins 0-3 of Yun
+// not connected to the shield, and with shield pins 2 & 13 connected, and also
+// shield pins 3 and 5 connected (so that 13 is Rx, and 5 is Tx)
+//
+// Also modified this sketch to use Console for printing debug messages
+
 #include <XBee.h>
 #include <Printers.h>
 #include <AltSoftSerial.h>
