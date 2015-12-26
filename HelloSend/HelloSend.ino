@@ -43,7 +43,7 @@ void sendPacket() {
     // And send it
     uint8_t status = xbee.sendAndWait(txRequest, 5000);
     if (status == 0) {
-      DebugSerial.println(F("Succesfully sent packet"));
+      DebugSerial.println(F("Successfully sent packet"));
     } else {
       DebugSerial.print(F("Failed to send packet. Status: 0x"));
       DebugSerial.println(status, HEX);
