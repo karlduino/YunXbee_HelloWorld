@@ -13,16 +13,24 @@
 #include <XBee.h>
 #include <Printers.h>
 #include <AltSoftSerial.h>
+#include <Console.h>
 
 XBeeWithCallbacks xbee;
 
 AltSoftSerial SoftSerial;
-#define DebugSerial Serial
+#define DebugSerial Console
 #define XBeeSerial SoftSerial
 
+#define ALTSS_USE_TIMER3
+#define INPUT_CAPTURE_PIN      13 // receive
+#define OUTPUT_COMPARE_A_PIN        5 // transmit
+
 void setup() {
+  Bridge.begin();
   // Setup debug serial output
-  DebugSerial.begin(115200);
+  //DebugSerial.begin(115200);
+  Console.begin();
+  while(!Console);
   DebugSerial.println(F("Starting..."));
 
   // Setup XBee serial communication
