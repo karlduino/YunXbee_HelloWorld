@@ -17,6 +17,11 @@ connect Arduinos to XBees. Using this with the Y&uacute;n turns out to
 be a bit tricky: see [here](http://bit.ly/yun_xbee) and
 [here](http://bit.ly/yun_xbee_2).
 
+This repository concerns the example in Chapter 2 of Kooijman's book,
+on sending a "Hello world" message between two XBees. Here modified to
+get it to work, particularly with the Y&uacute;n connected to the
+coordinator XBee.
+
 ### Hardware setup
 
 - Router XBee set as API Router, attached via the Sparkfun XBee shield
@@ -51,6 +56,17 @@ be a bit tricky: see [here](http://bit.ly/yun_xbee) and
   #define INPUT_CAPTURE_PIN      13 // receive
   #define OUTPUT_COMPARE_A_PIN        5 // transmit
   ```
+
+- I needed to make a further change to the `HelloReceive` sketch.
+  I originally didn't appear to be receiving any messages, but in
+  poking around with
+  [XCTU](http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu),
+  I found that the problem was the coordinator Xbee was getting an
+  "ExplicitRxResponse" rather than just an "RxResponse". I solved this
+  by adding `xbee.onZBExplicitRxResponse(processRxPacket);` plus an
+  alternative version of the `processRxPacket` with
+  `ZBExplicitRxResponse& rx` as the first input.
+
 
 ### Final notes
 
